@@ -1,20 +1,10 @@
-#include <iostream>
-#include <string>
-#include <fstream>  // Arquivos
-#include <sstream>  // Processar strings
-#include <vector>
-
-#include "../utils/Usuario.cpp";
-#include "../patterns/Singleton/AuthUser.cpp";
+#include "../includes/ControllerUsuario.h"
 
 using namespace std;
 
-class ControllerUsuario {
-private:
-    const string dirArqUsuario = "../dados/usuarios.txt";
 
     
-    bool loginJaExiste(string loginParaVerificar) {
+    bool ControllerUsuario::loginJaExiste(string loginParaVerificar) {
         ifstream arquivo(dirArqUsuario);
         string linha;
 
@@ -35,10 +25,10 @@ private:
 
 public:
     
-    ControllerUsuario() {}
+    ControllerUsuario::ControllerUsuario() 
 
     // CADASTRAR 
-    bool cadastrarUsuario(string login, string senha, string nome) {
+    bool ControllerUsuario::cadastrarUsuario(string login, string senha, string nome) {
         
         // Verifica se login já existe
         if (loginJaExiste(login)) {
@@ -58,7 +48,7 @@ public:
     }
 
     
-    bool autenticar(string loginDigitado, string senhaDigitada) {
+    bool ControllerUsuario::autenticar(string loginDigitado, string senhaDigitada) {
         ifstream arquivo(dirArqUsuario);
         string linha;
 
@@ -100,7 +90,6 @@ public:
         return false; 
     }
 
-    void logout(){
+    void ControllerUsuario::logout(){
         SessaoUsuario::getInstance()->logout();
     }
-};

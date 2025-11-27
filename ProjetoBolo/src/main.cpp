@@ -1,7 +1,8 @@
 #include <iostream>
 #include "ascii/componentes.cpp"
-#include "patterns/Singleton/AuthUser.cpp"
-#include "controllers/ControllerUsuario.cpp"
+#include "./includes/Usuario.h"
+#include "./includes/ControllerUsuario.h"
+#include "./includes/SessaoUsuario.h"
 
 int main(){
 

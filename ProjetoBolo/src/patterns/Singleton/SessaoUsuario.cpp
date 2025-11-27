@@ -1,63 +1,55 @@
-#include <iostream>
+
 #include <string>
-#include "../../utils/Usuario.cpp"
+#include "../../includes/SessaoUsuario.h"
 
 using namespace std;
 
-// --- SINGLETON DE SESSÃO  ---
-class SessaoUsuario {
-private:
-    static SessaoUsuario* instancia;
-    Usuario* usuarioLogado;
-
-    // Construtor Privado
-    SessaoUsuario() {
+SessaoUsuario::SessaoUsuario() {
         usuarioLogado = nullptr;
     }
 
-public:
-    // Ponto de acesso global
-    static SessaoUsuario* getInstance() {
+
+    SessaoUsuario* SessaoUsuario::getInstance() {
         if (instancia == nullptr) {
             instancia = new SessaoUsuario();
         }
         return instancia;
     }
 
-    void setUsuario(Usuario* u) 
+    void SessaoUsuario::setUsuario(Usuario* u) 
     { 
         usuarioLogado = u; 
     }
-    Usuario* getUsuario() 
+    Usuario* SessaoUsuario::getUsuario() 
     { 
         return usuarioLogado;
     }
-    string getNomeUsuario(){
+    string SessaoUsuario::getNomeUsuario(){
         if(usuarioLogado != nullptr)
             return usuarioLogado->getNome();
         return "Desconhecido";
     }
     
-    bool isLogado()
+    bool SessaoUsuario::isLogado()
     {
         return usuarioLogado != nullptr;
     }
     
-    void logout() { 
+    void SessaoUsuario::logout() { 
         if (usuarioLogado != nullptr) {
             delete usuarioLogado; // Deleta o objeto criado no login
             usuarioLogado = nullptr;
         }
     }
 
-    static void deleteSessao(){
+    static void SessaoUsuario::deleteSessao(){
         if (instancia != nullptr) {
             delete instancia;
             instancia = nullptr; 
         }
     }
 
-};
+
 
 //Inicialização da variável estática OBRIGATÓRIA fora da classe
 SessaoUsuario* SessaoUsuario::instancia = nullptr;
