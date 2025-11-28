@@ -22,6 +22,6 @@ public:
     // CADASTRAR 
     bool cadastrarUsuario(string login, string senha, string nome);
     
-    autenticar(string loginDigitado, string senhaDigitada);
+    bool autenticar(string loginDigitado, string senhaDigitada);
     void logout();
 };

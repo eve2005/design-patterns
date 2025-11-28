@@ -42,7 +42,7 @@ SessaoUsuario::SessaoUsuario() {
         }
     }
 
-    static void SessaoUsuario::deleteSessao(){
+    void SessaoUsuario::deleteSessao(){
         if (instancia != nullptr) {
             delete instancia;
             instancia = nullptr; 

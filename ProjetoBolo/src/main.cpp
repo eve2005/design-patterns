@@ -3,6 +3,27 @@
 #include "./includes/Usuario.h"
 #include "./includes/ControllerUsuario.h"
 #include "./includes/SessaoUsuario.h"
+#include "./patterns/Builder/BoloBuilder.cpp"
+#include "./patterns/CoR/Handler.cpp"
+
+void criarPedidos(Bolo* bolo){
+    ofstream arquivo("pedidos.txt", ios::app); 
+
+        if (arquivo.is_open()) {
+            
+            // Escreve a linha no arquivo
+            arquivo << bolo->saborMassa << ";" 
+                    << bolo->recheio << ";" 
+                    << bolo->cobertura << ";"
+                    << bolo->forma << ";"
+                    << bolo->quilo << ";"
+                    << bolo->numAndares << ";"
+                    << "sem decoracao"
+                    << endl;  
+
+            arquivo.close();
+}
+}
 
 int main(){
 
@@ -87,9 +108,39 @@ int main(){
 
             switch (opcao) {
                 case 1:
-                    cout << "\n[TODO] Aqui voce chamara o Builder..." << endl;
+                    BoloBuilder* builder = new BoloBuilder();
+
+                    // 1. Instancia todos os passos
+                    Handler* passo1 = new TelaMassa();
+                    Handler* passo2 = new TelaRecheio();
+                    Handler* passo3 = new TelaCobertura();
+                    Handler* passo4 = new TelaForma();   // Novo
+                    Handler* passo5 = new TelaPeso();    // Novo
+                    Handler* passo6 = new TelaAndares(); // Novo
+
+                    // 2. Liga a corrente (Massa -> Recheio -> Cobertura -> Forma -> Peso -> Andares)
+                    passo1->setNext(passo2)
+                        ->setNext(passo3)
+                        ->setNext(passo4)
+                        ->setNext(passo5)
+                        ->setNext(passo6);
+
+                    // 3. Inicia o processo
+                    passo1->handle(builder);
+
+                    // 4. Verifica se deu certo
+                    Bolo* bolo = builder->getBolo();
+
+                    criarPedidos(bolo);
+                    // Limpeza
+                    delete builder;
+                    delete bolo; 
+                    delete passo1; delete passo2; delete passo3; 
+                    delete passo4; delete passo5; delete passo6;
+                    
                     pausar();
                     break;
+        
                 case 2:
                     cout << "\n[TODO] Lista de bolos do estoque..." << endl;
                     pausar();

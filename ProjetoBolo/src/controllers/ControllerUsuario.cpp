@@ -23,9 +23,9 @@ using namespace std;
         return false;
     }
 
-public:
+
     
-    ControllerUsuario::ControllerUsuario() 
+    ControllerUsuario::ControllerUsuario(){}
 
     // CADASTRAR 
     bool ControllerUsuario::cadastrarUsuario(string login, string senha, string nome) {

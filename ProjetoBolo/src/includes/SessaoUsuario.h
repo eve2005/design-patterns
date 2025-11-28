@@ -1,3 +1,6 @@
+#ifndef SESSAO_USUARIO_H
+#define SESSAO_USUARIO_H
+
 #include <iostream>
 #include <string>
 #include "./Usuario.h"
@@ -25,3 +28,5 @@ public:
     static void deleteSessao();
 
 };
+
+#endif // SESSAO_USUARIO_H
