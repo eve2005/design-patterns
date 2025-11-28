@@ -1,8 +1,9 @@
-#pragma once
+
 #include <iostream>
 #include <vector>
 #include <string>
-#include "../Builder/BoloBuilder.cpp"
+#include "../../includes/Handler.h"
+#include "../../includes/BoloBuilder.h"
 #include <fstream>
 
 using namespace std;
@@ -78,35 +79,23 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
 
 
 // Interface
-class Handler {
-public:
-    virtual Handler* setNext(Handler* handler) = 0;
-    virtual void handle(BoloBuilder* builder) = 0; 
-};
 
-// Abstract
-class AbstractHandler : public Handler {
-private:
-    Handler* nextHandler;
-public:
-    AbstractHandler() : nextHandler(nullptr) {}
-    Handler* setNext(Handler* handler) override {
+    Handler* AbstractHandler::setNext(Handler* handler) {
         this->nextHandler = handler;
         return handler;
     }
-    void handle(BoloBuilder* builder) override {
+    void AbstractHandler::handle(BoloBuilder* builder) {
         if (this->nextHandler) {
             this->nextHandler->handle(builder);
         }
     }
-};
 
 
 
-//  ESCOLHA DE MASSA
-class TelaMassa : public AbstractHandler {
-public:
-    void handle(BoloBuilder* builder) override {
+
+// TELA MASSA
+
+    void TelaMassa::handle(BoloBuilder* builder)  {
         cout << "\n--- PASSO 1: ESCOLHA A MASSA ---" << endl;
         
         
@@ -140,11 +129,11 @@ public:
         AbstractHandler::handle(builder);
 
     }
-};
 
-class TelaRecheio : public AbstractHandler {
-public:
-    void handle(BoloBuilder* builder) override {
+
+//TELA RECHEIO
+
+    void TelaRecheio::handle(BoloBuilder* builder)  {
         cout << "\n--- PASSO 2: ESCOLHA O RECHEIO ---" << endl;
     
         vector<string> opcoes;
@@ -177,16 +166,15 @@ public:
         if(escolha == 0){
             recheio = "sem recheio";
         }
-        builder->setSaborMassa(recheio);
+        builder->addRecheio(recheio);
         
         //  o próximo passo 
         AbstractHandler::handle(builder);
     }
-};
 
-class TelaCobertura : public AbstractHandler {
-public:
-    void handle(BoloBuilder* builder) override {
+//TELA COBERTURA
+
+    void TelaCobertura::handle(BoloBuilder* builder)  {
         cout << "\n--- PASSO 3: ESCOLHA A COBERTURA ---" << endl;
         vector<string> opcoes;
         lerArquivo("./cobertura.txt",opcoes);
@@ -218,19 +206,16 @@ public:
         if(escolha == 0){
             cobertura = "sem cobertura";
         }
-        builder->setSaborMassa(cobertura);
+        builder->addCobertura(cobertura);
         
         //  o próximo passo 
         AbstractHandler::handle(builder);
     }
 
-};
+//TELA FORMA
 
 
-
-class TelaForma : public AbstractHandler {
-public:
-    void handle(BoloBuilder* builder) override {
+    void TelaForma::handle(BoloBuilder* builder)  {
 
         int escolha = -1;
         while (escolha<=0 && escolha>3)
@@ -265,10 +250,10 @@ public:
         AbstractHandler::handle(builder);  
         
     }
-};
-class TelaPeso : public AbstractHandler {
-public:
-    void handle(BoloBuilder* builder) override {
+
+//TELA PESO
+
+    void TelaPeso::handle(BoloBuilder* builder)  {
         cout << "\n--- PASSO 5: DEFINIR O PESO (KG) ---" << endl;
         
         double peso;
@@ -282,10 +267,10 @@ public:
             cout << "Peso invalido!" << endl;
         }
     }
-};
-class TelaAndares: public AbstractHandler {
-public:
-    void handle(BoloBuilder* builder) override {
+
+//TELA ANDARES
+
+    void TelaAndares::handle(BoloBuilder* builder)  {
         cout << "\n--- DEFINIR N DE ANDARES ---" << endl;
         
         int andar;
@@ -298,4 +283,3 @@ public:
         AbstractHandler::handle(builder);  
         
     }
-};

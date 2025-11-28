@@ -3,8 +3,8 @@
 #include "./includes/Usuario.h"
 #include "./includes/ControllerUsuario.h"
 #include "./includes/SessaoUsuario.h"
-#include "./patterns/Builder/BoloBuilder.cpp"
-#include "./patterns/CoR/Handler.cpp"
+#include "./includes/BoloBuilder.h"
+#include "./includes/Handler.h"
 
 void criarPedidos(Bolo* bolo){
     ofstream arquivo("pedidos.txt", ios::app); 
@@ -107,7 +107,7 @@ int main(){
             cin >> opcao;
 
             switch (opcao) {
-                case 1:
+                case 1:{
                     BoloBuilder* builder = new BoloBuilder();
 
                     // 1. Instancia todos os passos
@@ -140,11 +140,12 @@ int main(){
                     
                     pausar();
                     break;
-        
-                case 2:
+                }
+                case 2:{
                     cout << "\n[TODO] Lista de bolos do estoque..." << endl;
                     pausar();
                     break;
+                }
                 case 3:
                     cout << "\n[TODO] Leitura do arquivo de logs..." << endl;
                     pausar();

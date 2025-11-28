@@ -1,51 +1,42 @@
-#pragma once
-#include "../../includes/IBoloBuilder.h"
-#include "../../includes/Bolo.h"
-#include <vector>
 
-class BoloBuilder : public IBoloBuilder{
-    private:
-        Bolo* bolo;
-    public:
-
-    BoloBuilder(){
+#include "../../includes/BoloBuilder.h"
+     BoloBuilder::BoloBuilder(){
         this->reset();
     }
-    ~BoloBuilder(){
+    BoloBuilder::~BoloBuilder(){
         delete this->bolo;
     }
-    void reset(){
+    void BoloBuilder::reset(){
         this->bolo = new Bolo();
     }
 
     //---------------------NOSSA CONSTRUÇÃO-----------------------------------
 
-    void setSaborMassa(string saborMassa){
+    void BoloBuilder::setSaborMassa(string saborMassa){
         this->bolo->saborMassa = saborMassa;
     }   
-    void setPeso(double kilo){
+    void BoloBuilder::setPeso(double kilo){
         this->bolo->quilo = kilo;
     }
-    void addRecheio(string recheio){
+    void BoloBuilder::addRecheio(string recheio){
         this->bolo->recheio = recheio;
     }
-    void addForma(string forma){
+    void BoloBuilder::addForma(string forma){
         this->bolo->forma = forma;
     }
-    void addCobertura(string cobertura){
+    void BoloBuilder::addCobertura(string cobertura){
         this->bolo->cobertura = cobertura;
     }
-    void addDecoracao(string decoracao)
+    void BoloBuilder::addDecoracao(string decoracao)
     {
         this->bolo->decoracao.push_back(decoracao);
     }
-    void addAndares(int numAndares){
+    void BoloBuilder::addAndares(int numAndares){
         this->bolo->numAndares = numAndares;
     }
 
-    Bolo* getBolo(){
+    Bolo* BoloBuilder::getBolo(){
         Bolo * boloPronto = this->bolo;
         this->reset();
         return boloPronto;
     }
-};

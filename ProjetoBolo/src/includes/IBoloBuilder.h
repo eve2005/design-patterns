@@ -5,7 +5,7 @@ using namespace std;
 
 class IBoloBuilder{
     public:
-        virtual ~IBoloBuilder();
+        virtual ~IBoloBuilder() = default;
 
         //basicos
         virtual void reset() = 0;
