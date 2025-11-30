@@ -86,6 +86,7 @@ using namespace std;
                 }
             }
         }
+        arquivo.close();
 
         return false; 
     }

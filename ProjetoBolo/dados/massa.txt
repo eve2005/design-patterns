@@ -1,0 +1,15 @@
+baunilha;25
+chocolate;25
+red velvet;10
+cenoura;14
+limão;12
+laranja;13
+coco;0
+nozes;9
+fubá;15
+maracujá;10
+milho;11
+banana;8
+amêndoas;0
+café;7
+morango;8

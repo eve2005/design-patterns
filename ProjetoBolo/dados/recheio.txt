@@ -1,0 +1,15 @@
+Brigadeiro;29
+Beijinho;24
+Doce de Leite;34
+Creme de Avelã;15
+Coco Cremoso;20
+Morango com Creme;18
+Ganache de Chocolate;22
+Leite Ninho Cremoso;28
+Maracujá Cremoso;14
+Abacaxi com Coco;12
+Chantilly com Morango;26
+Creme Belga;19
+Amendoim Cremoso;17
+Nutella;9
+Creme de Baunilha;21

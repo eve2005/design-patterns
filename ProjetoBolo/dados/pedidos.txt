@@ -1,0 +1,2 @@
+chocolate;Beijinho;caramelo;;4;1;Com Frutas Frescas + Papel de Arroz + Para Presente + Papel de Arroz
+milho;Nutella;leite ninho;;3.2;1;Com Frutas Frescas + Papel de Arroz

@@ -100,7 +100,7 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
         
         
         vector<string> opcoes;
-        lerArquivo("./massas.txt",opcoes);
+        lerArquivo("../dados/massa.txt",opcoes);
         
 
         if (opcoes.empty()) {
@@ -109,7 +109,7 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
         }
 
         int escolha;
-        while(escolha<=0 && escolha> opcoes.size()){
+        while(escolha<=0 || escolha> opcoes.size()){
              for (int i = 0; i < opcoes.size(); i++) {
                     cout << i + 1 << " - " << opcoes[i] << endl;
             }
@@ -121,7 +121,7 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
         string massa = opcoes[escolha - 1];
         
         //dimininuir quantidade
-        atualizarQuantidade("massas.txt",massa);
+        atualizarQuantidade("../dados/massa.txt",massa);
         
         builder->setSaborMassa(massa);
         
@@ -137,7 +137,7 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
         cout << "\n--- PASSO 2: ESCOLHA O RECHEIO ---" << endl;
     
         vector<string> opcoes;
-        lerArquivo("./recheio.txt",opcoes);
+        lerArquivo("../dados/recheio.txt",opcoes);
         
 
         if (opcoes.empty()) {
@@ -145,8 +145,8 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
             return; 
         }
 
-        int escolha;
-        while(escolha<0 && escolha> opcoes.size()){
+        int escolha = -1;
+        while(escolha<0 || escolha> opcoes.size()){
             cout << "0 - Sem Recheio " << endl;
              for (int i = 0; i < opcoes.size(); i++) {
                     cout << i + 1 << " - " << opcoes[i] << endl;
@@ -159,7 +159,7 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
          recheio = opcoes[escolha - 1];
         
         //dimininuir quantidade
-        atualizarQuantidade("./recheio.txt",recheio);
+        atualizarQuantidade("../dados/recheio.txt",recheio);
         
         }
 
@@ -177,7 +177,7 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
     void TelaCobertura::handle(BoloBuilder* builder)  {
         cout << "\n--- PASSO 3: ESCOLHA A COBERTURA ---" << endl;
         vector<string> opcoes;
-        lerArquivo("./cobertura.txt",opcoes);
+        lerArquivo("../dados/cobertura.txt",opcoes);
         
 
         if (opcoes.empty()) {
@@ -185,8 +185,8 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
             return; 
         }
 
-        int escolha;
-        while(escolha<0 && escolha> opcoes.size()){
+        int escolha = -1;
+        while(escolha<0 || escolha> opcoes.size()){
             cout << "0 - Sem Cobertura " << endl;
              for (int i = 0; i < opcoes.size(); i++) {
                     cout << i + 1 << " - " << opcoes[i] << endl;
@@ -199,7 +199,7 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
          cobertura = opcoes[escolha - 1];
         
         //dimininuir quantidade
-        atualizarQuantidade("./cobertura.txt",cobertura);
+        atualizarQuantidade("../dados/cobertura.txt",cobertura);
         
         }
 
@@ -274,7 +274,7 @@ void lerArquivo(string dirArquivo,vector<string>& opcoes){
         cout << "\n--- DEFINIR N DE ANDARES ---" << endl;
         
         int andar;
-        while(andar<=0 && andar>3){
+        while(andar<=0 || andar>3){
             cout << "Digite o numero de andares(1-3): ";
             cin >> andar;
         }  

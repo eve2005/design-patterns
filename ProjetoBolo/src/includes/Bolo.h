@@ -3,7 +3,9 @@
 #include <vector>
 using namespace std;
 
-class Bolo{
+#include "./IBolo.h"
+
+class Bolo : public IBolo{
     public:
 
         string saborMassa;
@@ -28,6 +30,14 @@ class Bolo{
                 cout << "[" << d << "] ";
             }
             std::cout << "+---------------------------------------------------------------+" << endl;
+        }
+
+        string getListaDecoracoes() override {
+            return "Sem decoracao extra";
+        }
+
+        Bolo* getBolo () override {
+            return this;
         }
 
 };

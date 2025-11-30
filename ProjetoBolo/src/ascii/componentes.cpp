@@ -1,14 +1,17 @@
 
 #include <iostream>
 #include <string>
-#include <cstdlib> // Para system("cls")
-
+#include <cstdlib> 
 using namespace std;
 
 
 
 void limparTela() {
-    system("cls"); 
+    #ifdef _WIN32
+        system("cls");
+    #else   
+        system("clear");
+    #endif
 }
 
 void desenharCabecalho() {

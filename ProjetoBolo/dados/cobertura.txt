@@ -1,0 +1,15 @@
+chocolate;25
+morango;18
+caramelo;18
+chantilly;29
+limão;14
+doce de leite;22
+baunilha;28
+frutas vermelhas;14
+maracujá;17
+beijinho;19
+nutella;12
+coco;3
+amendoim;13
+creme suíço;0
+leite ninho;23
